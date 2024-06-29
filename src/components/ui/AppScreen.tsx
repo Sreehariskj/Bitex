@@ -15,7 +15,7 @@ type AppScreenProps = PropsWithChildren<{
   backgroundColor?: string;
   style?: StyleProp<ViewStyle>;
   statusBarStyle?: StyleProp<ViewStyle>;
-  barStyle: StyleProp<StatusBarStyle>;
+  barStyle?: StyleProp<StatusBarStyle>;
 }>;
 
 export const AppScreen: React.FC<AppScreenProps> = ({
