@@ -1,57 +1,131 @@
+import React, {PropsWithChildren, ReactNode} from 'react';
 import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextStyle,
   TouchableOpacity,
-  View,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  GestureResponderEvent,
+  StyleProp,
   ViewStyle,
+  TextStyle,
+  View,
+  Text,
 } from 'react-native';
-import React from 'react';
-import LinearGradient from 'react-native-linear-gradient';
-import {mp} from '../../hooks/responsive';
-import {FONT_WEIGHT} from '../../constants/Size';
+import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
+import {mp} from '../../hooks/responsive';
 
-type AppButtonProps = {
-  colors?: string[];
-  onPress: () => void;
+// Define props type
+type AppButtonProps = PropsWithChildren<{
+  onPress?: (event: GestureResponderEvent) => void;
+  type?: 'opacity' | 'highlight' | 'withoutFeedback'; // Type of touchable component
+  variant?: 'normal' | 'outline' | 'transparent'; // Variant styles for the button
+  title?: string; // Optional title for the button
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
-  title: string;
-};
+}>;
 
+// Create the component
 export const AppButton: React.FC<AppButtonProps> = ({
-  colors = ['#8DF3ED', '#34D9D1'],
   onPress,
+  type = 'opacity',
+  variant = 'transparent',
+  title,
+  children,
   style,
   textStyle,
-  title = '',
 }) => {
-  return (
-    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <LinearGradient colors={colors} style={styles.linearGradient}>
-        <Text style={[styles.buttonText, textStyle]}>{title}</Text>
-      </LinearGradient>
-    </TouchableOpacity>
+  const themeColors = {text: COLORS.TEXT, background: COLORS.BACKGROUND};
+
+  const getVariantStyle = (
+    variant: 'normal' | 'outline' | 'transparent',
+  ): StyleProp<ViewStyle> => {
+    switch (variant) {
+      case 'normal':
+        return {
+          backgroundColor: themeColors.text,
+          borderWidth: 0,
+        };
+      case 'outline':
+        return {
+          backgroundColor: 'transparent',
+          borderWidth: 1,
+          borderColor: themeColors.text,
+        };
+      case 'transparent':
+        return {
+          backgroundColor: 'transparent',
+          borderRadius: 0,
+          borderWidth: 0,
+          paddingVertical: 0,
+          paddingHorizontal: 0,
+        };
+      default:
+        return {}; // Default style
+    }
+  };
+
+  // Determine the button content based on 'title' and 'children' props
+  const buttonContent = title ? (
+    <Text
+      style={[
+        styles.text,
+        {
+          color:
+            variant === 'transparent'
+              ? themeColors.text
+              : themeColors.background,
+        },
+        textStyle,
+      ]}>
+      {title}
+    </Text>
+  ) : (
+    children
   );
+
+  // Render the appropriate touchable component based on the 'type' prop and apply variant styles
+  const renderTouchableComponent = () => {
+    let content = (
+      // @ts-ignore
+      <View style={[styles.button, getVariantStyle(variant), style]}>
+        {buttonContent}
+      </View>
+    );
+
+    switch (type) {
+      case 'opacity':
+        return <TouchableOpacity onPress={onPress}>{content}</TouchableOpacity>;
+      case 'highlight':
+        return (
+          <TouchableHighlight onPress={onPress}>{content}</TouchableHighlight>
+        );
+      case 'withoutFeedback':
+        return (
+          <TouchableWithoutFeedback onPress={onPress}>
+            {content}
+          </TouchableWithoutFeedback>
+        );
+      default:
+        return null; // Handle default case or throw error
+    }
+  };
+
+  return renderTouchableComponent();
 };
 
-const styles = StyleSheet.create({
-  container: {
-    // backgroundColor: 'red',
-    width: '100%',
+// Function to get variant-specific styles
+
+const styles = {
+  button: {
+    paddingVertical: mp(SPACING.SM),
+    paddingHorizontal: mp(SPACING.MD),
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'red',
   },
-  linearGradient: {
-    borderRadius: 25,
-    paddingVertical: mp(3),
-  },
-  buttonText: {
-    // backgroundColor: 'transparent',
-    color: COLORS.TEXT,
-    fontSize: mp(16),
+  text: {
+    fontSize: mp(FONT_SIZE.MD),
     fontWeight: FONT_WEIGHT.MEDIUM,
-    margin: 10,
-    textAlign: 'center',
   },
-});
+};
