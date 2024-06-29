@@ -33,7 +33,12 @@ export const AppScreen: React.FC<AppScreenProps> = ({
           {backgroundColor: backgroundColor},
           statusBarStyle,
         ]}>
-        <StatusBar backgroundColor={backgroundColor} barStyle={barStyle} />
+        <StatusBar
+          backgroundColor={backgroundColor}
+          // @ts-ignore
+          barStyle={barStyle}
+          translucent
+        />
       </View>
       {children}
     </SafeAreaView>

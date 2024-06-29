@@ -28,7 +28,11 @@ const EmailSignIn = () => {
     <AppScreen>
       <Header title="Sign in" />
       <AppKeyboardAvoidingView>
-        <ScrollView>
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          style={{flex: 1}}
+          contentContainerStyle={{paddingBottom: hp(15)}}>
           {/* HEADER */}
           <View style={styles.container}>
             <View style={styles.topContainer}>
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: mp(5),
   },
   footer: {
-    marginTop: hp(80),
+    marginTop: hp(120),
   },
   footerBtn: {
     flexDirection: 'row',

@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor: 'red',
     minHeight: ICON_CONTAINER_SIZE,
+    marginTop: 5,
   },
   iconContainer: {
     alignItems: 'center',

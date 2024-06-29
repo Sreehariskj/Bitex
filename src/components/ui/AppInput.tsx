@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: mp(15),
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: mp(15),
+    marginBottom: hp(10),
   },
   input: {
     flex: 1,
