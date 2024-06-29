@@ -7,7 +7,7 @@ import {AppText} from '../../components/ui';
 import {hp, mp, useViewPort} from '../../hooks/responsive';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
-import {AppButton} from '../../components/ui/AppButton';
+import {PrimaryButton} from '../../components/Button/PrimaryButton';
 
 const Welcome = ({navigation}: any) => {
   const {setVw} = useViewPort();
@@ -46,13 +46,13 @@ const Welcome = ({navigation}: any) => {
         </View>
         {/* BOTTOM SECTION */}
         <View style={[styles.bottomSection, {width: setVw(85)}]}>
-          <AppButton
+          <PrimaryButton
             title="Login"
             onPress={onLogin}
             colors={['#C1B2FF', '#9B87FF']}
             style={styles.btnStyle}
           />
-          <AppButton
+          <PrimaryButton
             title="Register"
             onPress={onRegister}
             style={styles.btnStyle}

@@ -6,7 +6,7 @@ import {hp, mp, useViewPort} from '../../../hooks/responsive';
 import {AppInput} from '../../../components/ui/AppInput';
 import {COLORS} from '../../../constants/Color';
 import ImageContainer from '../ImageContainer';
-import {AppButton} from '../../../components/ui/AppButton';
+import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import {FONT_WEIGHT} from '../../../constants/Size';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
 
@@ -51,7 +51,7 @@ const EmailSignIn = () => {
             </TouchableOpacity>
           </View>
           {/* Sign in  */}
-          <AppButton title="Sign In" onPress={onSignIn} />
+          <PrimaryButton title="Sign In" onPress={onSignIn} />
         </View>
         {/* FOOTER SECTION */}
         <View style={styles.footer}>
