@@ -22,6 +22,6 @@ export default ImageContainer;
 
 const styles = StyleSheet.create({
   image: {
-    marginVertical: hp(55),
+    marginVertical: mp(55),
   },
 });
