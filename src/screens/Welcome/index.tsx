@@ -4,12 +4,12 @@ import React from 'react';
 import {AppScreen} from '../../components/ui/AppScreen';
 import ImageCard from './ImageCard';
 import {AppText} from '../../components/ui';
-import {hp, ms, useViewPort} from '../../hooks/responsive';
+import {hp, mp, useViewPort} from '../../hooks/responsive';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
-import AppButton from '../../components/ui/AppButton';
+import {AppButton} from '../../components/ui/AppButton';
 
-const Welcome = () => {
+const Welcome = ({navigation}: any) => {
   const {setVw} = useViewPort();
 
   // Logic : Bottom Section
@@ -17,6 +17,7 @@ const Welcome = () => {
     if (__DEV__) {
       console.log('Login');
     }
+    navigation.navigate('EmailSignIn');
   };
   const onRegister = () => {
     if (__DEV__) {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     width: 250,
   },
   btnStyle: {
-    marginTop: ms(20),
+    marginTop: mp(20),
   },
   container: {
     alignItems: 'center',
@@ -81,19 +82,19 @@ const styles = StyleSheet.create({
     marginTop: SPACING.MD,
   },
   descriptionText: {
-    fontSize: ms(FONT_SIZE.MD),
-    // fontWeight: FONT_WEIGHT.BOLD,
     color: COLORS.NEUTRAL,
+    fontSize: mp(FONT_SIZE.MD),
+    // fontWeight: FONT_WEIGHT.BOLD,
   },
   midSection: {
-    marginVertical: ms(SPACING.XL),
+    marginVertical: mp(SPACING.XL),
   },
   textContainer: {
     alignItems: 'center',
   },
   titleText: {
     color: COLORS.PRIMARY,
-    fontSize: ms(FONT_SIZE.XXL),
+    fontSize: mp(FONT_SIZE.XXL),
     fontWeight: FONT_WEIGHT.BOLD,
   },
 });

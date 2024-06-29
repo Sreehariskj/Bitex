@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {COLORS} from '../../constants/Color';
-import {ms, useViewPort} from '../../hooks/responsive';
+import {useViewPort} from '../../hooks/responsive';
 
 const ImageCard = () => {
   const {setVw, setVh} = useViewPort();
@@ -16,9 +16,9 @@ export default ImageCard;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.DARK,
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: COLORS.DARK,
     borderRadius: 20,
+    justifyContent: 'center',
   },
 });

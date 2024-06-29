@@ -9,7 +9,7 @@ export const hp = (size: number) => {
   return verticalScale(size);
 };
 
-export const ms = (size: number) => {
+export const mp = (size: number) => {
   return moderateScale(size);
 };
 

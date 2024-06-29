@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {hp, ms} from '../../hooks/responsive';
-import {FONT_SIZE, FONT_WEIGHT} from '../../constants/Size';
+import {mp} from '../../hooks/responsive';
+import {FONT_WEIGHT} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
 
 type AppButtonProps = {
@@ -21,7 +21,7 @@ type AppButtonProps = {
   title: string;
 };
 
-const AppButton: React.FC<AppButtonProps> = ({
+export const AppButton: React.FC<AppButtonProps> = ({
   colors = ['#8DF3ED', '#34D9D1'],
   onPress,
   style,
@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     borderRadius: 25,
-    paddingVertical: ms(3),
+    paddingVertical: mp(3),
   },
   buttonText: {
     // backgroundColor: 'transparent',
     color: COLORS.TEXT,
-    fontSize: ms(16),
+    fontSize: mp(16),
     fontWeight: FONT_WEIGHT.MEDIUM,
     margin: 10,
     textAlign: 'center',

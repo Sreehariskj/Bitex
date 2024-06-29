@@ -1,5 +1,8 @@
 import {StyleProp, StyleSheet, Text, TextProps, TextStyle} from 'react-native';
 import React, {PropsWithChildren} from 'react';
+import {COLORS} from '../../constants/Color';
+import {FONT_SIZE} from '../../constants/Size';
+import {mp} from '../../hooks/responsive';
 
 type Props = PropsWithChildren<{
   style?: StyleProp<TextStyle>;
@@ -16,6 +19,7 @@ export const AppText: React.FC<Props> = ({children, style, ...rest}: Props) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 16, // add as needed
+    fontSize: mp(FONT_SIZE.MD), // add as needed
+    color: COLORS.TEXT,
   },
 });

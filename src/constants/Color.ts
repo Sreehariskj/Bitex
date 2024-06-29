@@ -6,6 +6,7 @@ interface Colors {
   NEUTRAL: string;
   DANGER: string;
   DARK: string;
+  WARNING: string;
 }
 export const COLORS: Colors = {
   PRIMARY: '#4DE0D9',
@@ -15,4 +16,5 @@ export const COLORS: Colors = {
   NEUTRAL: '#A6A3B8',
   DANGER: '#FE8270',
   DARK: '#111319',
+  WARNING: '#FDAE67',
 };
