@@ -4,14 +4,13 @@ import React from 'react';
 import {AppScreen} from '../../components/ui/AppScreen';
 import ImageCard from './ImageCard';
 import {AppText} from '../../components/ui';
-import {hp, mp, useViewPort} from '../../hooks/responsive';
+import {hp, mp, wp} from '../../hooks/responsive';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
 import {PrimaryButton} from '../../components/Button/PrimaryButton';
+import {AppScroll} from '../../components/ui/AppScroll';
 
 const Welcome = ({navigation}: any) => {
-  const {setVw} = useViewPort();
-
   // Logic : Bottom Section
   const onLogin = () => {
     if (__DEV__) {
@@ -26,39 +25,43 @@ const Welcome = ({navigation}: any) => {
   };
   return (
     <AppScreen>
-      <View style={styles.container}>
-        {/* TOP SECTION */}
-        <ImageCard />
-        {/* MID SECTION */}
-        <View style={styles.midSection}>
-          {/* TITLE TEXT */}
-          <View style={[styles.textContainer, styles.titleContainer]}>
-            <AppText style={styles.titleText}>Welcome to</AppText>
-            <AppText style={styles.titleText}>Cryptocurrency</AppText>
+      <AppScroll>
+        <View style={styles.container}>
+          {/* TOP SECTION */}
+          <ImageCard />
+          {/* MID SECTION */}
+          <View style={styles.midSection}>
+            {/* TITLE TEXT */}
+            <View style={[styles.textContainer]}>
+              <AppText style={styles.titleText}>Welcome to</AppText>
+              <AppText style={styles.titleText}>Cryptocurrency</AppText>
+            </View>
+            {/* DESCRIPTION TEXT */}
+            <View style={[styles.textContainer, styles.descriptionContainer]}>
+              <AppText style={styles.descriptionText}>
+                Deliver your Order around the world
+              </AppText>
+              <AppText style={styles.descriptionText}>
+                without hesitation
+              </AppText>
+            </View>
           </View>
-          {/* DESCRIPTION TEXT */}
-          <View style={[styles.textContainer, styles.descriptionContainer]}>
-            <AppText style={styles.descriptionText}>
-              Deliver your Order around the world
-            </AppText>
-            <AppText style={styles.descriptionText}>without hesitation</AppText>
+          {/* BOTTOM SECTION */}
+          <View style={[styles.bottomSection]}>
+            <PrimaryButton
+              title="Login"
+              onPress={onLogin}
+              colors={['#C1B2FF', '#9B87FF']}
+              style={styles.btnStyle}
+            />
+            <PrimaryButton
+              title="Register"
+              onPress={onRegister}
+              style={styles.btnStyle}
+            />
           </View>
         </View>
-        {/* BOTTOM SECTION */}
-        <View style={[styles.bottomSection, {width: setVw(85)}]}>
-          <PrimaryButton
-            title="Login"
-            onPress={onLogin}
-            colors={['#C1B2FF', '#9B87FF']}
-            style={styles.btnStyle}
-          />
-          <PrimaryButton
-            title="Register"
-            onPress={onRegister}
-            style={styles.btnStyle}
-          />
-        </View>
-      </View>
+      </AppScroll>
     </AppScreen>
   );
 };
@@ -67,7 +70,7 @@ export default Welcome;
 
 const styles = StyleSheet.create({
   bottomSection: {
-    width: 250,
+    width: wp(260),
   },
   btnStyle: {
     marginTop: mp(20),

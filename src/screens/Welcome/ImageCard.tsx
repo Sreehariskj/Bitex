@@ -1,13 +1,16 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {COLORS} from '../../constants/Color';
-import {useViewPort} from '../../hooks/responsive';
+import {hp} from '../../hooks/responsive';
 
 const ImageCard = () => {
-  const {setVw, setVh} = useViewPort();
+  const CARD_SIZE = hp(240);
   return (
-    <View style={[styles.container, {width: setVw(80), height: setVh(40)}]}>
-      <Image source={require('../../assets/images/welcome-card.png')} />
+    <View style={[styles.container, {width: CARD_SIZE, height: CARD_SIZE}]}>
+      <Image
+        source={require('../../assets/images/welcome-card.png')}
+        style={styles.image}
+      />
     </View>
   );
 };
@@ -20,5 +23,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DARK,
     borderRadius: 20,
     justifyContent: 'center',
+  },
+  image: {
+    // width: mp(25),
   },
 });
