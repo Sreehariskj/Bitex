@@ -8,27 +8,21 @@ import ImageContainer from '../ImageContainer';
 import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
 import {FONT_WEIGHT} from '../../../constants/Size';
-import {AppInput} from '../../../components/ui/AppInput';
 import {obscureEmail} from '../../../helper/obscure';
+import {Select} from '../components/Select';
+import {CITY_DATA, COUNTRY_DATA} from '../../../data/location';
 
-const ForgetPassword = ({navigation}: any) => {
+const ForgetPassword = () => {
   const [value, setValue] = useState('');
-  const [obscure, setObsure] = useState('');
 
-  const onBtnPress = () => {
-    navigation.navigate('Location');
-  };
+  const onBtnPress = () => {};
   const onInputChange = (text: string) => {
     setValue(text);
-  };
-  const onBlur = () => {
-    const result = obscureEmail(value);
-    setObsure(result);
   };
 
   return (
     <AppScreen>
-      <Header title="Forget Password" />
+      <Header title="Select Location" />
       <AppKeyboardAvoidingView>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -39,42 +33,18 @@ const ForgetPassword = ({navigation}: any) => {
           <View style={styles.container}>
             {/* IMAGE SECTION */}
             <ImageContainer
-              source={require('../../../assets/images/forget.png')}
+              source={require('../../../assets/images/location.png')}
             />
-            {/* INFO SECTION */}
-            <View style={styles.infoSection}>
-              <AppText style={[styles.infoText]}>
-                We will send a mail to the email address
-              </AppText>
-              <AppText style={[styles.infoText]}>
-                you registered to regain your password
-              </AppText>
-            </View>
+
             {/* INPUT SECTION */}
             <View style={[styles.inputContainer]}>
-              <AppInput
-                iconColor={COLORS.NEUTRAL}
-                iconName="email"
-                placeholder="johndoe@gmail.com"
-                inputMode="email"
-                keyboardType="email-address"
-                onChangeText={onInputChange}
-                value={value}
-                onBlur={onBlur}
-              />
-            </View>
-            {/* OPTION SECTION */}
-            <View style={styles.optionSection}>
-              <AppText style={styles.notifyText}>
-                {`${
-                  !!obscure ? `Email sent to ${obscure}` : 'Enter valid email !'
-                }`}
-              </AppText>
+              <Select data={COUNTRY_DATA} placeholder="Select your Country" />
+              <Select data={CITY_DATA} placeholder="Select your City" />
             </View>
             {/* BUTTON SECTION */}
             <View style={[styles.buttonSection]}>
               {/* Sign in  */}
-              <PrimaryButton title="Send" onPress={onBtnPress} />
+              <PrimaryButton title="Continue" onPress={onBtnPress} />
             </View>
           </View>
         </ScrollView>

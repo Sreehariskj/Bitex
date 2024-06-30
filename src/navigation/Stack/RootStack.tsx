@@ -3,6 +3,7 @@ import {
   CreatePassword,
   EmailSignIn,
   ForgetPassword,
+  Location,
   MobileSignIn,
   OtpVerification,
   Welcome,
@@ -19,6 +20,7 @@ export const RootStack = () => {
       <Stack.Screen name="OtpVerification" component={OtpVerification} />
       <Stack.Screen name="CreatePassword" component={CreatePassword} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+      <Stack.Screen name="Location" component={Location} />
     </Stack.Navigator>
   );
 };
