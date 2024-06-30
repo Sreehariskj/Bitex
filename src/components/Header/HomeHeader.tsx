@@ -25,6 +25,7 @@ export const HomeHeader: React.FC<HeaderProps> = () => {
   const navigation = useNavigation();
 
   const onDrawer = () => {
+    // @ts-ignore
     navigation.toggleDrawer();
   };
 

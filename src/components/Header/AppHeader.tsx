@@ -17,7 +17,7 @@ import {AppButton} from '../ui/AppButton';
 
 type HeaderProps = {
   title: string;
-  onBackPress: () => any;
+  onBackPress?: () => any;
 };
 const CONTAINER_SPACING = mp(SPACING.MD);
 const ICON_SIZE = mp(28);
