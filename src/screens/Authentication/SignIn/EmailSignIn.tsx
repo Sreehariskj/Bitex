@@ -18,12 +18,14 @@ import {FONT_WEIGHT} from '../../../constants/Size';
 import CheckBox from '@react-native-community/checkbox';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
 
-const EmailSignIn = () => {
+const EmailSignIn = ({navigation}: any) => {
   const {setVw} = useViewPort();
   const CONTAINER_SPACING = setVw(80);
   const [checked, setChecked] = useState(false);
 
-  const onSignIn = () => {};
+  const onSignIn = () => {
+    navigation.navigate('MobileSignIn');
+  };
   return (
     <AppScreen>
       <Header title="Sign in" />

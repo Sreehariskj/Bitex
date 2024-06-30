@@ -9,7 +9,7 @@ import React from 'react';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {COLORS} from '../../constants/Color';
-import {mp} from '../../hooks/responsive';
+import {hp, mp} from '../../hooks/responsive';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import {AppText} from '../ui';
 import {useNavigation} from '@react-navigation/native';
