@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
-import {Header} from '../../../components/Header';
+import {Header} from '../../../components/Header/AppHeader';
 import {AppScreen, AppText} from '../../../components/ui';
 import {hp, mp} from '../../../hooks/responsive';
 import {COLORS} from '../../../constants/Color';

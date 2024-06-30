@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     left: CONTAINER_SPACING,
   },
   text: {
-    fontSize: FONT_SIZE.XXL,
+    fontSize: FONT_SIZE.XL,
     fontWeight: FONT_WEIGHT.MEDIUM,
   },
 });
