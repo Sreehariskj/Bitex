@@ -1,4 +1,5 @@
 import {
+  Image,
   StyleSheet,
   TouchableHighlight,
   TouchableOpacity,
@@ -15,33 +16,33 @@ import {AppText} from '../ui';
 import {useNavigation} from '@react-navigation/native';
 import {AppButton} from '../ui/AppButton';
 
-type HeaderProps = {
-  title: string;
-  onBackPress: () => any;
-};
+type HeaderProps = {};
 const CONTAINER_SPACING = mp(SPACING.MD);
-const ICON_SIZE = mp(28);
+const ICON_SIZE = mp(22);
 const ICON_CONTAINER_SIZE = ICON_SIZE + mp(15);
 
-export const Header: React.FC<HeaderProps> = ({title = '', onBackPress}) => {
+export const HomeHeader: React.FC<HeaderProps> = () => {
   const navigation = useNavigation();
 
-  const onBack = () => {
-    navigation.goBack();
+  const onDrawer = () => {
+    navigation.toggleDrawer();
   };
 
   return (
     <View style={[styles.container]}>
+      {/* <View style={styles.iconContainer}> */}
+      <AppButton onPress={onDrawer}>
+        <Image
+          source={require('../../assets/images/menu.png')}
+          style={styles.menuImg}
+        />
+      </AppButton>
+      {/* </View> */}
       <View style={styles.iconContainer}>
-        <AppButton onPress={!!onBackPress ? onBackPress : onBack}>
-          <MCIcon
-            name="keyboard-backspace"
-            color={COLORS.TEXT}
-            size={ICON_SIZE}
-          />
+        <AppButton>
+          <MCIcon name="bell-outline" color={COLORS.TEXT} size={ICON_SIZE} />
         </AppButton>
       </View>
-      <AppText style={styles.text}>{title}</AppText>
     </View>
   );
 };
@@ -49,8 +50,8 @@ export const Header: React.FC<HeaderProps> = ({title = '', onBackPress}) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    // paddingHorizontal: CONTAINER_SPACING,
-    justifyContent: 'center',
+    paddingHorizontal: CONTAINER_SPACING,
+    justifyContent: 'space-between',
     alignItems: 'center',
     // backgroundColor: 'red',
     minHeight: ICON_CONTAINER_SIZE,
@@ -62,9 +63,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.DARK,
     width: ICON_CONTAINER_SIZE,
     height: ICON_CONTAINER_SIZE,
-    borderRadius: ICON_CONTAINER_SIZE / 2,
-    position: 'absolute',
-    left: CONTAINER_SPACING,
+    borderRadius: ICON_CONTAINER_SIZE * 0.24,
+  },
+  menuImg: {
+    // tintColor: COLORS.NEUTRAL,
   },
   text: {
     fontSize: FONT_SIZE.XL,

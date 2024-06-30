@@ -3,11 +3,13 @@ import {
   CreatePassword,
   EmailSignIn,
   ForgetPassword,
+  Home,
   Location,
   MobileSignIn,
   OtpVerification,
   Welcome,
 } from '../../screens';
+import {RootDrawer} from '../Drawer';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,7 @@ export const RootStack = () => {
       <Stack.Screen name="CreatePassword" component={CreatePassword} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       <Stack.Screen name="Location" component={Location} />
+      <Stack.Screen name="Home" component={RootDrawer} />
     </Stack.Navigator>
   );
 };

@@ -12,10 +12,12 @@ import {obscureEmail} from '../../../helper/obscure';
 import {Select} from '../components/Select';
 import {CITY_DATA, COUNTRY_DATA} from '../../../data/location';
 
-const ForgetPassword = () => {
+const ForgetPassword = ({navigation}: any) => {
   const [value, setValue] = useState('');
 
-  const onBtnPress = () => {};
+  const onBtnPress = () => {
+    navigation.replace('Home');
+  };
   const onInputChange = (text: string) => {
     setValue(text);
   };
