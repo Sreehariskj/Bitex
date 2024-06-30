@@ -8,21 +8,25 @@ import ImageContainer from '../ImageContainer';
 import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
 import {FONT_WEIGHT} from '../../../constants/Size';
-import {ValidLabel} from '../components/ValidLabel';
-import {PasswordInput} from '../components/PasswordInput';
+import {AppInput} from '../../../components/ui/AppInput';
+import {obscureEmail} from '../../../helper/obscure';
 
-const CreatePassword = ({navigation}: any) => {
+const ForgetPassword = () => {
   const [value, setValue] = useState('');
+  const [obscure, setObsure] = useState('');
 
-  const onBtnPress = () => {
-    navigation.navigate('ForgetPassword');
-  };
-  const onInputChange = (text: any) => {
+  const onBtnPress = () => {};
+  const onInputChange = (text: string) => {
     setValue(text);
   };
+  const onBlur = () => {
+    const result = obscureEmail(value);
+    setObsure(result);
+  };
+
   return (
     <AppScreen>
-      <Header title="Create Password" />
+      <Header title="Forget Password" />
       <AppKeyboardAvoidingView>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -33,34 +37,42 @@ const CreatePassword = ({navigation}: any) => {
           <View style={styles.container}>
             {/* IMAGE SECTION */}
             <ImageContainer
-              source={require('../../../assets/images/password.png')}
+              source={require('../../../assets/images/forget.png')}
             />
             {/* INFO SECTION */}
             <View style={styles.infoSection}>
               <AppText style={[styles.infoText]}>
-                Choose a secure password that will be
+                We will send a mail to the email address
               </AppText>
               <AppText style={[styles.infoText]}>
-                easy for you to remember.
+                you registered to regain your password
               </AppText>
             </View>
             {/* INPUT SECTION */}
             <View style={[styles.inputContainer]}>
-              <PasswordInput />
+              <AppInput
+                iconColor={COLORS.NEUTRAL}
+                iconName="email"
+                placeholder="johndoe@gmail.com"
+                inputMode="email"
+                keyboardType="email-address"
+                onChangeText={onInputChange}
+                value={value}
+                onBlur={onBlur}
+              />
             </View>
             {/* OPTION SECTION */}
             <View style={styles.optionSection}>
-              <ValidLabel label="Has at least characters" isActive={true} />
-              <ValidLabel
-                label="Has an uppercase letter or symbol"
-                isActive={true}
-              />
-              <ValidLabel label="Has at number" isActive={false} />
+              <AppText style={styles.notifyText}>
+                {`${
+                  !!obscure ? `Email sent to ${obscure}` : 'Enter valid email !'
+                }`}
+              </AppText>
             </View>
             {/* BUTTON SECTION */}
             <View style={[styles.buttonSection]}>
               {/* Sign in  */}
-              <PrimaryButton title="Verify Now" onPress={onBtnPress} />
+              <PrimaryButton title="Send" onPress={onBtnPress} />
             </View>
           </View>
         </ScrollView>
@@ -69,15 +81,14 @@ const CreatePassword = ({navigation}: any) => {
   );
 };
 
-export default CreatePassword;
+export default ForgetPassword;
 
 const styles = StyleSheet.create({
   buttonSection: {
     width: '100%',
-    marginTop: mp(25),
   },
   container: {
-    width: '80%',
+    width: '75%',
     flex: 1,
     alignItems: 'center',
     // justifyContent: 'space-between',
@@ -85,17 +96,16 @@ const styles = StyleSheet.create({
     // paddingHorizontal: mp(45),
   },
   notifyText: {
-    color: COLORS.PRIMARY,
+    color: COLORS.DANGER,
     marginTop: mp(6),
   },
   optionTop: {
-    flexDirection: 'row',
     alignItems: 'center',
   },
   optionSection: {
-    alignSelf: 'flex-start',
-    marginTop: mp(15),
-    marginBottom: mp(35),
+    // alignSelf: 'flex-start',
+    marginTop: mp(3),
+    marginBottom: mp(20),
   },
 
   optionText: {

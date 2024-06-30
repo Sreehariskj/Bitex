@@ -21,6 +21,7 @@ interface CustomProps {
   error?: string;
   iconName?: string;
   iconColor?: string;
+  [x: string]: any;
 }
 type Props = CustomProps & TextInputProps;
 export const AppInput = ({
