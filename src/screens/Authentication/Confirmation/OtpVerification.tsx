@@ -16,19 +16,20 @@ import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
 import {PhoneNumberInput} from '../PhoneInput';
 import {AppButton} from '../../../components/ui/AppButton';
+import {FONT_WEIGHT} from '../../../constants/Size';
+import {OtpInput} from '../components/OtpInput';
 
-const MobileSignIn = ({navigation}: any) => {
+const OtpVerification = ({route}: any) => {
   const [value, setValue] = useState('');
+  const {phone} = route.params;
 
-  const onSignIn = () => {
-    navigation.navigate('OtpVerification', {phone: value});
-  };
+  const onSignIn = () => {};
   const onInputChange = (text: any) => {
     setValue(text);
   };
   return (
     <AppScreen>
-      <Header title="Sign in" />
+      <Header title="OTP Verification" />
       <AppKeyboardAvoidingView>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -39,38 +40,37 @@ const MobileSignIn = ({navigation}: any) => {
           <View style={styles.container}>
             {/* IMAGE SECTION */}
             <ImageContainer
-              source={require('../../../assets/images/mobile-sign-in.png')}
+              source={require('../../../assets/images/otp.png')}
             />
             {/* INFO SECTION */}
             <View style={styles.infoSection}>
               <AppText style={[styles.infoText]}>
-                Simply enter your phone number to login
+                An authentication code has been sent to
               </AppText>
-              <AppText style={[styles.infoText]}>or create an account.</AppText>
+              <AppText style={[styles.infoText]}>{phone}</AppText>
             </View>
             {/* INPUT SECTION */}
             <View style={[styles.inputContainer]}>
-              <PhoneNumberInput value={value} onChange={onInputChange} />
+              <OtpInput />
             </View>
-            {/* Agree SECTION */}
-            <View style={styles.agreeSection}>
-              <AppText style={[styles.agreeText]}>
-                By using our mobile app, you agree to our
-              </AppText>
-              <View style={styles.agreeBottom}>
-                <AppText style={[styles.agreeText]}>and</AppText>
+            {/* OPTION SECTION */}
+            <View style={styles.optionSection}>
+              <View style={styles.optionTop}>
+                <AppText style={[styles.optionText]}>
+                  I didn't receive code.
+                </AppText>
                 <AppButton>
-                  <AppText style={[styles.notifyText]}>Privacy Policy</AppText>
+                  <AppText style={[styles.resendText]}>Resend Code</AppText>
                 </AppButton>
-                <AppButton>
-                  <AppText style={[styles.notifyText]}>Terms of Use</AppText>
-                </AppButton>
+              </View>
+              <View>
+                <AppText style={styles.notifyText}>1:20 Sec left</AppText>
               </View>
             </View>
             {/* BUTTON SECTION */}
             <View style={[styles.buttonSection]}>
               {/* Sign in  */}
-              <PrimaryButton title="Continue" onPress={onSignIn} />
+              <PrimaryButton title="Verify Now" onPress={onSignIn} />
             </View>
           </View>
         </ScrollView>
@@ -79,7 +79,7 @@ const MobileSignIn = ({navigation}: any) => {
   );
 };
 
-export default MobileSignIn;
+export default OtpVerification;
 
 const styles = StyleSheet.create({
   buttonSection: {
@@ -94,26 +94,32 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     // paddingHorizontal: mp(45),
   },
-  agreeBottom: {
+  notifyText: {
+    color: COLORS.PRIMARY,
+    marginTop: mp(6),
+  },
+  optionTop: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  agreeSection: {
-    // alignItems: 'center',
-    marginTop: mp(25),
+  optionSection: {
+    alignItems: 'center',
+    marginTop: mp(15),
     marginBottom: mp(35),
   },
-  agreeText: {
-    color: COLORS.NEUTRAL,
+
+  optionText: {
+    color: COLORS.TEXT,
   },
-  notifyText: {
-    color: COLORS.NEUTRAL,
-    fontSize: mp(12),
+
+  resendText: {
+    color: COLORS.DANGER,
+    fontWeight: FONT_WEIGHT.MEDIUM,
     marginLeft: mp(5),
   },
   infoSection: {
     alignItems: 'center',
-    marginBottom: mp(25),
+    marginBottom: mp(10),
   },
   infoText: {
     color: COLORS.NEUTRAL,
