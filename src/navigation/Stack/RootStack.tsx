@@ -1,5 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
+  CreatePassword,
   EmailSignIn,
   MobileSignIn,
   OtpVerification,
@@ -15,6 +16,7 @@ export const RootStack = () => {
       <Stack.Screen name="EmailSignIn" component={EmailSignIn} />
       <Stack.Screen name="MobileSignIn" component={MobileSignIn} />
       <Stack.Screen name="OtpVerification" component={OtpVerification} />
+      <Stack.Screen name="CreatePassword" component={CreatePassword} />
     </Stack.Navigator>
   );
 };

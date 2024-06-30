@@ -1,12 +1,5 @@
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {ScrollView, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
 import {Header} from '../../../components/Header';
 import {AppScreen, AppText} from '../../../components/ui';
 import {hp, mp} from '../../../hooks/responsive';
@@ -14,23 +7,20 @@ import {COLORS} from '../../../constants/Color';
 import ImageContainer from '../ImageContainer';
 import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
-import {AppButton} from '../../../components/ui/AppButton';
 import {FONT_WEIGHT} from '../../../constants/Size';
-import {OtpInput} from '../components/OtpInput';
+import {ValidLabel} from '../components/ValidLabel';
+import {PasswordInput} from '../components/PasswordInput';
 
-const OtpVerification = ({route, navigation}: any) => {
+const CreatePassword = () => {
   const [value, setValue] = useState('');
-  const {phone} = route.params;
 
-  const onSignIn = () => {
-    navigation.navigate('CreatePassword');
-  };
+  const onSignIn = () => {};
   const onInputChange = (text: any) => {
     setValue(text);
   };
   return (
     <AppScreen>
-      <Header title="OTP Verification" />
+      <Header title="Create Password" />
       <AppKeyboardAvoidingView>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -41,32 +31,29 @@ const OtpVerification = ({route, navigation}: any) => {
           <View style={styles.container}>
             {/* IMAGE SECTION */}
             <ImageContainer
-              source={require('../../../assets/images/otp.png')}
+              source={require('../../../assets/images/password.png')}
             />
             {/* INFO SECTION */}
             <View style={styles.infoSection}>
               <AppText style={[styles.infoText]}>
-                An authentication code has been sent to
+                Choose a secure password that will be
               </AppText>
-              <AppText style={[styles.infoText]}>{phone}</AppText>
+              <AppText style={[styles.infoText]}>
+                easy for you to remember.
+              </AppText>
             </View>
             {/* INPUT SECTION */}
             <View style={[styles.inputContainer]}>
-              <OtpInput />
+              <PasswordInput />
             </View>
             {/* OPTION SECTION */}
             <View style={styles.optionSection}>
-              <View style={styles.optionTop}>
-                <AppText style={[styles.optionText]}>
-                  I didn't receive code.
-                </AppText>
-                <AppButton>
-                  <AppText style={[styles.resendText]}>Resend Code</AppText>
-                </AppButton>
-              </View>
-              <View>
-                <AppText style={styles.notifyText}>1:20 Sec left</AppText>
-              </View>
+              <ValidLabel label="Has at least characters" isActive={true} />
+              <ValidLabel
+                label="Has an uppercase letter or symbol"
+                isActive={true}
+              />
+              <ValidLabel label="Has at number" isActive={false} />
             </View>
             {/* BUTTON SECTION */}
             <View style={[styles.buttonSection]}>
@@ -80,7 +67,7 @@ const OtpVerification = ({route, navigation}: any) => {
   );
 };
 
-export default OtpVerification;
+export default CreatePassword;
 
 const styles = StyleSheet.create({
   buttonSection: {
@@ -104,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   optionSection: {
-    alignItems: 'center',
+    alignSelf: 'flex-start',
     marginTop: mp(15),
     marginBottom: mp(35),
   },
@@ -120,7 +107,7 @@ const styles = StyleSheet.create({
   },
   infoSection: {
     alignItems: 'center',
-    marginBottom: mp(10),
+    marginBottom: mp(20),
   },
   infoText: {
     color: COLORS.NEUTRAL,
