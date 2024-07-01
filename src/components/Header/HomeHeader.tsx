@@ -28,6 +28,10 @@ export const HomeHeader: React.FC<HeaderProps> = () => {
     // @ts-ignore
     navigation.toggleDrawer();
   };
+  const onNotification = () => {
+    // @ts-ignore
+    navigation.navigate('Notification');
+  };
 
   return (
     <View style={[styles.container]}>
@@ -40,7 +44,7 @@ export const HomeHeader: React.FC<HeaderProps> = () => {
       </AppButton>
       {/* </View> */}
       <View style={styles.iconContainer}>
-        <AppButton>
+        <AppButton onPress={onNotification}>
           <MCIcon name="bell-outline" color={COLORS.TEXT} size={ICON_SIZE} />
         </AppButton>
       </View>

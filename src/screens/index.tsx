@@ -6,3 +6,4 @@ export {default as CreatePassword} from './Authentication/Confirmation/CreatePas
 export {default as ForgetPassword} from './Authentication/Confirmation/ForgetPassword';
 export {default as Location} from './Authentication/Confirmation/Location';
 export {default as Home} from './Home';
+export {default as Notification} from './Notification';

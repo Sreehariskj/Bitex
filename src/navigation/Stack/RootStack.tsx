@@ -6,6 +6,7 @@ import {
   Home,
   Location,
   MobileSignIn,
+  Notification,
   OtpVerification,
   Welcome,
 } from '../../screens';
@@ -24,6 +25,7 @@ export const RootStack = () => {
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
       <Stack.Screen name="Location" component={Location} />
       <Stack.Screen name="Home" component={RootDrawer} />
+      <Stack.Screen name="Notification" component={Notification} />
     </Stack.Navigator>
   );
 };
