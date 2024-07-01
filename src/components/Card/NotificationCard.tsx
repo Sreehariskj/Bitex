@@ -12,11 +12,14 @@ import {COLORS} from '../../constants/Color';
 import {hp, mp, wp} from '../../hooks/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 type NotificationCardProp = {
   item: any;
   colors: any;
   style?: StyleProp<ViewStyle>;
+  showRightSection?: boolean;
+  rightSectionIcon?: string;
 };
 const IMG_SIZE = mp(20);
 const IMG_CONTAINER_SIZE = IMG_SIZE + mp(20);
@@ -24,7 +27,10 @@ export const NotificationCard: React.FC<NotificationCardProp> = ({
   colors = [],
   item,
   style,
+  showRightSection = false,
+  rightSectionIcon,
 }) => {
+  const isSuccess = item.info === '+' ? true : false;
   return (
     <View style={[styles.container, style]}>
       <View style={styles.left}>
@@ -47,7 +53,27 @@ export const NotificationCard: React.FC<NotificationCardProp> = ({
         </View>
       </View>
       <View style={styles.right}>
-        <AppText style={styles.infoText}>{item.info}</AppText>
+        {showRightSection ? (
+          <View style={{justifyContent: 'space-between'}}>
+            <AppText style={[styles.titleValueText]}>{item.titleValue}</AppText>
+            <View style={styles.rightDownSection}>
+              <MCIcon
+                name={rightSectionIcon}
+                size={mp(21)}
+                color={isSuccess ? COLORS.PRIMARY : COLORS.DANGER}
+              />
+              <AppText
+                style={[
+                  styles.subtitleValueText,
+                  {color: isSuccess ? COLORS.PRIMARY : COLORS.DANGER},
+                ]}>
+                {`${item.info} ${item.subtitleValue}`}
+              </AppText>
+            </View>
+          </View>
+        ) : (
+          item.info && <AppText style={styles.infoText}>{item.info}</AppText>
+        )}
       </View>
     </View>
   );
@@ -88,9 +114,24 @@ const styles = StyleSheet.create({
     color: COLORS.NEUTRAL,
     // maxWidth: '60%',
   },
+  titleValueText: {
+    fontSize: mp(16),
+    // color: COLORS.NEUTRAL,
+    // maxWidth: '60%',
+  },
   right: {
     // backgroundColor: 'red',
     alignSelf: 'flex-end',
+    height: '100%',
+  },
+  rightDownSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    // backgroundColor: 'red',
+  },
+  subtitleValueText: {
+    marginLeft: mp(2),
   },
   infoText: {
     color: COLORS.NEUTRAL,
