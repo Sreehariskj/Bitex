@@ -8,6 +8,7 @@ import {
   MobileSignIn,
   Notification,
   OtpVerification,
+  Profile,
   Welcome,
 } from '../../screens';
 import {RootDrawer} from '../Drawer';
@@ -26,6 +27,7 @@ export const RootStack = () => {
       <Stack.Screen name="Location" component={Location} />
       <Stack.Screen name="Home" component={RootDrawer} />
       <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 };

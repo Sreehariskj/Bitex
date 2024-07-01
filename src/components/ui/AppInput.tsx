@@ -31,11 +31,17 @@ export const AppInput = ({
   isPassword = false,
   iconName = 'magnify',
   iconColor = COLORS.TEXT,
+  isIconRight = false,
   ...rest
 }: Props) => {
   return (
     <>
-      <View style={[styles.container, style]}>
+      <View
+        style={[
+          styles.container,
+          style,
+          {flexDirection: isIconRight ? 'row-reverse' : 'row'},
+        ]}>
         <MCIcon name={iconName} size={mp(20)} color={iconColor} />
         <TextInput
           secureTextEntry={isPassword}
@@ -56,7 +62,7 @@ const styles = StyleSheet.create({
     height: hp(40),
     borderRadius: mp(25),
     paddingHorizontal: mp(15),
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',
     marginBottom: hp(10),
   },

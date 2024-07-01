@@ -16,6 +16,7 @@ import {AppScreen, AppText} from '../../components/ui';
 import {MenuList} from './MenuList';
 import {Header} from '../../components/Header/AppHeader';
 import {AppScroll} from '../../components/ui/AppScroll';
+import {AppButton} from '../../components/ui/AppButton';
 
 const imgSize = mp(50);
 const iconSize = mp(30);
@@ -25,11 +26,14 @@ export const DrawerContent: React.FC<any> = ({navigation}) => {
   const onBackPress = () => {
     navigation.closeDrawer();
   };
+  const onProfilePress = () => {
+    navigation.navigate('Profile');
+  };
   return (
     <AppScreen>
       <View style={[styles.container, {backgroundColor: COLORS.BACKGROUND}]}>
         <Header title="Settings" onBackPress={onBackPress} />
-        <View style={[styles.topContainer]}>
+        <AppButton style={[styles.topContainer]} onPress={onProfilePress}>
           <View style={styles.topLeft}>
             <Image
               source={require('../../assets/images/avatar.png')}
@@ -41,7 +45,7 @@ export const DrawerContent: React.FC<any> = ({navigation}) => {
             </View>
           </View>
           <Icon name="chevron-right" size={mp(25)} color={TEXT_COLOR} />
-        </View>
+        </AppButton>
         <AppScroll>
           <MenuList />
         </AppScroll>
