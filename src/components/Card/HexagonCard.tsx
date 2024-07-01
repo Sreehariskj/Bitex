@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.PRIMARY,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: mp(8),
     // transform: [{rotate: '20deg'}],
   },
 });

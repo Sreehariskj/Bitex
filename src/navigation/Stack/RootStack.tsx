@@ -18,7 +18,6 @@ const Stack = createNativeStackNavigator();
 export const RootStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name="Home" component={RootDrawer} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="EmailSignIn" component={EmailSignIn} />
       <Stack.Screen name="MobileSignIn" component={MobileSignIn} />
@@ -28,6 +27,7 @@ export const RootStack = () => {
       <Stack.Screen name="Location" component={Location} />
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Home" component={RootDrawer} />
     </Stack.Navigator>
   );
 };

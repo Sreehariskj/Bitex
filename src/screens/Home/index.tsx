@@ -19,54 +19,56 @@ import {ItemSeparator} from '../../components/ItemSeparator';
 import {SectionHeader} from './component/SectionHeader';
 import {CategoryCard} from '../../components/Card/CategoryCard';
 import {NotificationCard} from '../../components/Card/NotificationCard';
+import {AppScroll} from '../../components/ui/AppScroll';
 
 const Home = () => {
   const onPortfolioPress = () => {};
   return (
     <AppScreen>
       <HomeHeader />
-      <View style={styles.container}>
-        {/* WELCOME SECTION */}
-        <View style={[styles.section, styles.welcomeContainer]}>
-          <AppText style={styles.welcomeText}>Hi Alex Smith</AppText>
-          <AppText style={styles.greetText}>Good Morning</AppText>
-        </View>
-        {/* MAIN CARD SECTION */}
-        <View style={{marginTop: hp(20), marginBottom: hp(12)}}>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            data={WALLET_DATA}
-            ItemSeparatorComponent={() => <ItemSeparator width={mp(15)} />}
-            renderItem={({item, index}) => (
-              <MainCard
-                item={item}
-                colors={getColors(index, MAIN_CARD_COLORS)}
-              />
-            )}
-          />
-        </View>
-        {/* PROTFOLIO SECTION */}
-        <View style={styles.section}>
-          <SectionHeader title="Portfolio" onPress={onPortfolioPress} />
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            data={PORTFOLIO_DATA}
-            ItemSeparatorComponent={() => <ItemSeparator width={mp(10)} />}
-            renderItem={({item, index}) => (
-              <PortfolioCard
-                item={item}
-                colors1={getColors(index + 1, MAIN_CARD_COLORS)}
-                colors2={getColors(index + 2, MAIN_CARD_COLORS)}
-              />
-            )}
-            style={{marginVertical: mp(20)}}
-          />
-        </View>
-        {/* CATEGORY SECTION */}
-        <View style={[styles.section, styles.categoryContainer]}>
-          {/* <FlatList
+      <AppScroll>
+        <View style={styles.container}>
+          {/* WELCOME SECTION */}
+          <View style={[styles.section, styles.welcomeContainer]}>
+            <AppText style={styles.welcomeText}>Hi Alex Smith</AppText>
+            <AppText style={styles.greetText}>Good Morning</AppText>
+          </View>
+          {/* MAIN CARD SECTION */}
+          <View style={{marginTop: hp(20), marginBottom: hp(12)}}>
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal
+              data={WALLET_DATA}
+              ItemSeparatorComponent={() => <ItemSeparator width={mp(15)} />}
+              renderItem={({item, index}) => (
+                <MainCard
+                  item={item}
+                  colors={getColors(index, MAIN_CARD_COLORS)}
+                />
+              )}
+            />
+          </View>
+          {/* PROTFOLIO SECTION */}
+          <View style={styles.section}>
+            <SectionHeader title="Portfolio" onPress={onPortfolioPress} />
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal
+              data={PORTFOLIO_DATA}
+              ItemSeparatorComponent={() => <ItemSeparator width={mp(10)} />}
+              renderItem={({item, index}) => (
+                <PortfolioCard
+                  item={item}
+                  colors1={getColors(index + 1, MAIN_CARD_COLORS)}
+                  colors2={getColors(index + 2, MAIN_CARD_COLORS)}
+                />
+              )}
+              style={{marginVertical: mp(20)}}
+            />
+          </View>
+          {/* CATEGORY SECTION */}
+          <View style={[styles.section, styles.categoryContainer]}>
+            {/* <FlatList
             showsHorizontalScrollIndicator={false}
             horizontal
             data={CATEGORY_DATA}
@@ -79,35 +81,36 @@ const Home = () => {
             )}
             style={{marginVertical: mp(20)}}
           /> */}
-          {CATEGORY_DATA.map((item, index) => (
-            <CategoryCard
-              key={index}
-              item={item}
-              colors={getColors(index + 3, MAIN_CARD_COLORS)}
-            />
-          ))}
-        </View>
-        {/* MARKET SECTION */}
-        <View style={[styles.section]}>
-          <SectionHeader title="Portfolio" onPress={onPortfolioPress} />
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            data={MARKET_DATA}
-            ItemSeparatorComponent={() => <ItemSeparator width={mp(10)} />}
-            renderItem={({item, index}) => (
-              <NotificationCard
-                style={styles.notificationCard}
+            {CATEGORY_DATA.map((item, index) => (
+              <CategoryCard
+                key={index}
                 item={item}
-                colors={getColors(index + 1, MAIN_CARD_COLORS)}
-                showRightSection={true}
-                rightSectionIcon="chevron-down"
+                colors={getColors(index + 3, MAIN_CARD_COLORS)}
               />
-            )}
-            style={{marginTop: mp(20)}}
-          />
+            ))}
+          </View>
+          {/* MARKET SECTION */}
+          <View style={[styles.section]}>
+            <SectionHeader title="Market" onPress={onPortfolioPress} />
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal
+              data={MARKET_DATA}
+              ItemSeparatorComponent={() => <ItemSeparator width={mp(10)} />}
+              renderItem={({item, index}) => (
+                <NotificationCard
+                  style={styles.notificationCard}
+                  item={item}
+                  colors={getColors(index + 1, MAIN_CARD_COLORS)}
+                  showRightSection={true}
+                  rightSectionIcon="chevron-down"
+                />
+              )}
+              style={{marginTop: mp(20)}}
+            />
+          </View>
         </View>
-      </View>
+      </AppScroll>
     </AppScreen>
   );
 };

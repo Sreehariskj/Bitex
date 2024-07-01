@@ -11,8 +11,12 @@ export const PortfolioCard = ({item, colors1, colors2}: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <HexagonCard colors={colors1} size={mp(25)}>
-          <Image source={item.image} />
+        <HexagonCard colors={colors1} size={mp(22)}>
+          <Image
+            source={item.image}
+            resizeMode="contain"
+            style={{width: mp(15), height: mp(15)}}
+          />
         </HexagonCard>
         <AppText style={styles.mainText}>{item.title}</AppText>
         <LinearGradient colors={colors2} style={styles.detailContainer}>
@@ -43,21 +47,22 @@ const styles = StyleSheet.create({
   detailContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: mp(2),
+    paddingHorizontal: mp(7),
+    paddingVertical: mp(2),
     borderRadius: mp(10),
     // width: mp(25),
     flex: 0.8,
   },
   mainText: {
-    fontSize: mp(12),
+    fontSize: mp(11),
     color: COLORS.NEUTRAL,
   },
   titleValueText: {
-    fontSize: mp(18),
+    fontSize: mp(17),
     fontWeight: FONT_WEIGHT.MEDIUM,
-    marginTop: mp(4),
+    marginTop: mp(5),
   },
   detailText: {
-    fontSize: mp(13),
+    fontSize: mp(11),
   },
 });
