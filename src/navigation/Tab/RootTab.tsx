@@ -9,6 +9,7 @@ import {SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
 import {HexagonCard} from '../../components/Card/HexagonCard';
 import {HomeStack} from '../Stack/HomeStack';
+import {DummyComponent} from '../../components/DummyComponent';
 
 // TAB SCREEN DATA
 const TAB_SCREEN_DATA = [
@@ -19,22 +20,22 @@ const TAB_SCREEN_DATA = [
   },
   {
     name: 'Wallet',
-    component: Home,
+    component: DummyComponent,
     iconName: 'wallet-outline',
   },
   {
     name: 'Add',
-    component: Home,
+    component: DummyComponent,
     iconName: 'plus',
   },
   {
     name: 'Chat',
-    component: Home,
+    component: DummyComponent,
     iconName: 'forum-outline',
   },
   {
     name: 'Settings',
-    component: Home,
+    component: DummyComponent,
     iconName: 'cog-outline',
   },
 ];
