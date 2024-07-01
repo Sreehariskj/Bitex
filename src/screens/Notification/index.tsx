@@ -3,7 +3,7 @@ import React from 'react';
 import {AppScreen} from '../../components/ui';
 import {Header} from '../../components/Header/AppHeader';
 import {NOTIFICATION_DATA} from '../../data/notification';
-import {NotificationCard} from '../../components/Card/NotificationCard';
+import {MainCard} from '../../components/Card/MainCard';
 import {hp, wp} from '../../hooks/responsive';
 import {SPACING} from '../../constants/Size';
 
@@ -30,7 +30,7 @@ const Notification = () => {
           showsHorizontalScrollIndicator={false}
           data={NOTIFICATION_DATA}
           renderItem={({item, index}) => (
-            <NotificationCard item={item} colors={getColors(index, colors)} />
+            <MainCard item={item} colors={getColors(index, colors)} />
           )}
         />
       </View>

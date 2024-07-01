@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-type NotificationCardProp = {
+type MainCardProp = {
   item: any;
   colors: any;
   style?: StyleProp<ViewStyle>;
@@ -23,7 +23,7 @@ type NotificationCardProp = {
 };
 const IMG_SIZE = mp(20);
 const IMG_CONTAINER_SIZE = IMG_SIZE + mp(20);
-export const NotificationCard: React.FC<NotificationCardProp> = ({
+export const MainCard: React.FC<MainCardProp> = ({
   colors = [],
   item,
   style,

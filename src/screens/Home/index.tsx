@@ -18,7 +18,7 @@ import {MAIN_CARD_COLORS} from '../../data/color';
 import {ItemSeparator} from '../../components/ItemSeparator';
 import {SectionHeader} from './component/SectionHeader';
 import {CategoryCard} from '../../components/Card/CategoryCard';
-import {NotificationCard} from '../../components/Card/NotificationCard';
+import {MainCard} from '../../components/Card/MainCard';
 import {AppScroll} from '../../components/ui/AppScroll';
 
 const Home = () => {
@@ -98,7 +98,7 @@ const Home = () => {
               data={MARKET_DATA}
               ItemSeparatorComponent={() => <ItemSeparator width={mp(10)} />}
               renderItem={({item, index}) => (
-                <NotificationCard
+                <MainCard
                   style={styles.notificationCard}
                   item={item}
                   colors={getColors(index + 1, MAIN_CARD_COLORS)}
