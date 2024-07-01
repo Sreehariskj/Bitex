@@ -5,6 +5,7 @@ import {
   ForgetPassword,
   Home,
   Location,
+  Market,
   MobileSignIn,
   Notification,
   OtpVerification,
@@ -28,6 +29,7 @@ export const RootStack = () => {
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Home" component={RootDrawer} />
+      <Stack.Screen name="Market" component={Market} />
     </Stack.Navigator>
   );
 };

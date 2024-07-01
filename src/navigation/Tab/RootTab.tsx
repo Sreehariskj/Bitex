@@ -8,12 +8,13 @@ import {hp, mp, useViewPort} from '../../hooks/responsive';
 import {SPACING} from '../../constants/Size';
 import {COLORS} from '../../constants/Color';
 import {HexagonCard} from '../../components/Card/HexagonCard';
+import {HomeStack} from '../Stack/HomeStack';
 
 // TAB SCREEN DATA
 const TAB_SCREEN_DATA = [
   {
     name: 'Home',
-    component: Home,
+    component: HomeStack,
     iconName: 'home-variant-outline',
   },
   {

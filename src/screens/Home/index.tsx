@@ -21,8 +21,13 @@ import {CategoryCard} from '../../components/Card/CategoryCard';
 import {MainCard} from '../../components/Card/MainCard';
 import {AppScroll} from '../../components/ui/AppScroll';
 
-const Home = () => {
-  const onPortfolioPress = () => {};
+const Home = ({navigation}) => {
+  const onPortfolioPress = () => {
+    // navigation.navigate('Market')
+  };
+  const onMarketPress = () => {
+    navigation.navigate('Market');
+  };
   return (
     <AppScreen>
       <HomeHeader />
@@ -91,7 +96,7 @@ const Home = () => {
           </View>
           {/* MARKET SECTION */}
           <View style={[styles.section]}>
-            <SectionHeader title="Market" onPress={onPortfolioPress} />
+            <SectionHeader title="Market" onPress={onMarketPress} />
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal
