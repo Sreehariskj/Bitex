@@ -9,7 +9,7 @@ import {COLORS} from '../../constants/Color';
 import LinearGradient from 'react-native-linear-gradient';
 
 const ICON_SIZE = mp(20);
-export const MainCard = ({item, colors}) => {
+export const HomeCard = ({item, colors}) => {
   return (
     <LinearGradient colors={colors} style={styles.container}>
       <View style={styles.section}>

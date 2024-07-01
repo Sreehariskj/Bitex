@@ -11,7 +11,7 @@ import {
   PORTFOLIO_DATA,
   WALLET_DATA,
 } from '../../data/card';
-import {MainCard} from '../../components/Card/MainCard';
+import {HomeCard} from '../../components/Card/HomeCard';
 import {PortfolioCard} from '../../components/Card/PortfolioCard';
 import {getColors} from '../../helper/color';
 import {MAIN_CARD_COLORS} from '../../data/color';
@@ -41,7 +41,7 @@ const Home = () => {
               data={WALLET_DATA}
               ItemSeparatorComponent={() => <ItemSeparator width={mp(15)} />}
               renderItem={({item, index}) => (
-                <MainCard
+                <HomeCard
                   item={item}
                   colors={getColors(index, MAIN_CARD_COLORS)}
                 />
