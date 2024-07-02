@@ -12,3 +12,4 @@ export {default as Market} from './Market';
 export {default as Scanner} from './Market/Scanner';
 export {default as Portfolio} from './Portfolio';
 export {default as PortfolioDetail} from './Portfolio/Detail';
+export {default as Preloader} from './Preloader';

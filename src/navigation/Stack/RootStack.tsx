@@ -11,6 +11,7 @@ import {
   OtpVerification,
   Portfolio,
   PortfolioDetail,
+  Preloader,
   Profile,
   Scanner,
   Welcome,
@@ -22,6 +23,7 @@ const Stack = createNativeStackNavigator();
 export const RootStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Preloader" component={Preloader} />
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="EmailSignIn" component={EmailSignIn} />
       <Stack.Screen name="MobileSignIn" component={MobileSignIn} />

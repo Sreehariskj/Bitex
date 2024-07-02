@@ -6,6 +6,7 @@ import {hp, mp} from '../../hooks/responsive';
 import {AppText} from '../../components/ui';
 import {COLORS} from '../../constants/Color';
 import {FONT_WEIGHT} from '../../constants/Size';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const TEXT_COLOR = COLORS.TEXT;
 const ACCENT_COLOR = COLORS.PRIMARY;
@@ -28,6 +29,10 @@ const HeaderMenuComponent = ({title, isActive}: HeaderMenuProps) => (
 
 export const MenuList = () => {
   const navigation = useNavigation();
+  const onSignOut = async () => {
+    await AsyncStorage.setItem('@IS_LOGGED_IN', '');
+    navigation.navigate('EmailSignIn');
+  };
   const accountData = [
     {
       name: 'Change Password',
@@ -53,7 +58,7 @@ export const MenuList = () => {
     {
       name: 'Sign Out',
       iconName: 'exit-to-app',
-      onPress: () => navigation.navigate('Home'),
+      onPress: onSignOut,
     },
   ];
   const moreOptionData = [

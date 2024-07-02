@@ -17,13 +17,15 @@ import {PrimaryButton} from '../../../components/Button/PrimaryButton';
 import {FONT_WEIGHT} from '../../../constants/Size';
 import CheckBox from '@react-native-community/checkbox';
 import AppKeyboardAvoidingView from '../../../components/ui/AppKeyboardAvoidingView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const EmailSignIn = ({navigation}: any) => {
   const {setVw} = useViewPort();
   const CONTAINER_SPACING = setVw(80);
   const [checked, setChecked] = useState(false);
 
-  const onSignIn = () => {
+  const onSignIn = async () => {
+    await AsyncStorage.setItem('@IS_LOGGED_IN', 'true');
     navigation.navigate('MobileSignIn');
   };
   return (
