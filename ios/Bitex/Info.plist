@@ -25,6 +25,12 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
+	<!-- camera -->
+	<key>NSCameraUsageDescription</key>
+	<string>For taking photos</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For saving photos</string>
 	<dict>
 	  <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
 		<key>NSAllowsArbitraryLoads</key>
