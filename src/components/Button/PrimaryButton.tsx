@@ -17,6 +17,7 @@ type PrimaryButtonProps = {
   colors?: string[];
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   title: string;
 };
@@ -25,12 +26,15 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   colors = ['#8DF3ED', '#34D9D1'],
   onPress,
   style,
+  containerStyle,
   textStyle,
   title = '',
 }) => {
   return (
     <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
-      <LinearGradient colors={colors} style={styles.linearGradient}>
+      <LinearGradient
+        colors={colors}
+        style={[styles.linearGradient, containerStyle]}>
         <Text style={[styles.buttonText, textStyle]}>{title}</Text>
       </LinearGradient>
     </TouchableOpacity>

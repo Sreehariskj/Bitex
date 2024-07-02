@@ -21,9 +21,9 @@ import {CategoryCard} from '../../components/Card/CategoryCard';
 import {MainCard} from '../../components/Card/MainCard';
 import {AppScroll} from '../../components/ui/AppScroll';
 
-const Home = ({navigation}) => {
+const Home = ({navigation}: any) => {
   const onPortfolioPress = () => {
-    // navigation.navigate('Market')
+    navigation.navigate('Portfolio');
   };
   const onMarketPress = () => {
     navigation.navigate('Market');
