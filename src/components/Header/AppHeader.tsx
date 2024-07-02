@@ -1,8 +1,10 @@
 import {
+  StyleProp,
   StyleSheet,
   TouchableHighlight,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import React from 'react';
 // @ts-ignore
@@ -21,6 +23,7 @@ type HeaderProps = {
   rightIcon?: string;
   rightIconColor?: string;
   onRightPress?: () => any;
+  style?: StyleProp<ViewStyle>;
 };
 const CONTAINER_SPACING = mp(SPACING.MD);
 const ICON_SIZE = mp(28);
@@ -32,6 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
   rightIcon,
   rightIconColor,
   onRightPress,
+  style,
 }) => {
   const navigation = useNavigation();
 
@@ -44,6 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
       style={[
         styles.container,
         {justifyContent: isRightIcon ? 'space-between' : 'center'},
+        style,
       ]}>
       <View style={[styles.iconContainer, !isRightIcon && styles.leftIcon]}>
         <AppButton onPress={!!onBackPress ? onBackPress : onBack}>
@@ -89,6 +94,7 @@ const styles = StyleSheet.create({
     minHeight: ICON_CONTAINER_SIZE,
     marginTop: 5,
     paddingHorizontal: mp(6),
+    backgroundColor: COLORS.BACKGROUND,
   },
   iconContainer: {
     alignItems: 'center',

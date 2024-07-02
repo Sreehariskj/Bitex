@@ -9,7 +9,7 @@ import {MARKET_DATA} from '../../data/card';
 import {AppInput} from '../../components/ui/AppInput';
 import {COLORS} from '../../constants/Color';
 
-const Market = () => {
+const Market = ({navigation}) => {
   const colors = [
     ['#FAC47F', '#F8A946'],
     ['#FF9BD0', '#FF73AA'],
@@ -22,13 +22,16 @@ const Market = () => {
     const color = colors[val];
     return color;
   };
-
+  const onRightPress = () => {
+    navigation.navigate('Scanner');
+  };
   return (
     <AppScreen>
       <Header
         title={'Market Trends'}
         rightIcon="magnify"
         rightIconColor={COLORS.PRIMARY}
+        onRightPress={onRightPress}
       />
       <View style={styles.container}>
         <AppInput placeholder="Search Currency" style={styles.search} />

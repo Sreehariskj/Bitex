@@ -12,6 +12,7 @@ import {
   Portfolio,
   PortfolioDetail,
   Profile,
+  Scanner,
   Welcome,
 } from '../../screens';
 import {RootDrawer} from '../Drawer';
@@ -32,6 +33,7 @@ export const RootStack = () => {
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Home" component={RootDrawer} />
       <Stack.Screen name="Market" component={Market} />
+      <Stack.Screen name="Scanner" component={Scanner} />
       <Stack.Screen name="Portfolio" component={Portfolio} />
       <Stack.Screen name="PortfolioDetail" component={PortfolioDetail} />
     </Stack.Navigator>
