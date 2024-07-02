@@ -18,6 +18,8 @@ import {AppButton} from '../../components/ui/AppButton';
 import {RoundButton} from './component/RoundBtn';
 import {Category} from './component/Category';
 import {InfoCard} from './component/InfoCard';
+import {CandleChart} from '../../components/Chart/CandleChart';
+import {CANDLE_CHART_DATA} from '../../data/chart';
 
 const CATEGORY_LIST_DATA = ['1H', '1D', '1W', '1M', '6M', '1Y', 'ALL'];
 const INFO_LIST_DATA = [
@@ -81,6 +83,11 @@ const PortfolioDetail = () => {
               <RoundButton icon="arrow-expand" backgroundColor="#FE8270" />
             </View>
           </View>
+        </View>
+        {/* CHART SECTION */}
+        <View style={styles.chartContainer}>
+          {/* // Invariant Violation: requireNativeComponent: "RNSVGGroup" was not found in the UIManager */}
+          {/* <CandleChart data={CANDLE_CHART_DATA} /> */}
         </View>
         {/* SELECTION SECTION */}
         <View style={styles.categoryContainer}>
@@ -160,6 +167,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+  },
+  chartContainer: {
+    height: hp(140),
+    backgroundColor: '#eee',
   },
   container: {
     flex: 1,
