@@ -11,7 +11,7 @@ import {COLORS} from '../../constants/Color';
 import {BalanceCard} from '../../components/Card/BalanceCard';
 import {PrimaryButton} from '../../components/Button/PrimaryButton';
 
-const Portfolio = () => {
+const Portfolio = ({navigation}) => {
   const colors = [
     ['#FAC47F', '#F8A946'],
     ['#FF9BD0', '#FF73AA'],
@@ -37,6 +37,9 @@ const Portfolio = () => {
 
   const onHoldPress = () => {};
   const onHourPress = () => {};
+  const onMainPress = () => {
+    navigation.navigate('PortfolioDetail');
+  };
   return (
     <AppScreen>
       <Header title={'Portfolio'} rightIcon="dots-vertical" />
@@ -74,6 +77,7 @@ const Portfolio = () => {
               item={item}
               colors={getColors(index, colors)}
               showRightSection
+              onPress={onMainPress}
             />
           )}
         />

@@ -10,6 +10,7 @@ import {
   Notification,
   OtpVerification,
   Portfolio,
+  PortfolioDetail,
   Profile,
   Welcome,
 } from '../../screens';
@@ -32,6 +33,7 @@ export const RootStack = () => {
       <Stack.Screen name="Home" component={RootDrawer} />
       <Stack.Screen name="Market" component={Market} />
       <Stack.Screen name="Portfolio" component={Portfolio} />
+      <Stack.Screen name="PortfolioDetail" component={PortfolioDetail} />
     </Stack.Navigator>
   );
 };

@@ -13,6 +13,7 @@ import {hp, mp, wp} from '../../hooks/responsive';
 import LinearGradient from 'react-native-linear-gradient';
 import {FONT_SIZE, FONT_WEIGHT, SPACING} from '../../constants/Size';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AppButton} from '../ui/AppButton';
 
 type MainCardProp = {
   item: any;
@@ -20,6 +21,7 @@ type MainCardProp = {
   style?: StyleProp<ViewStyle>;
   showRightSection?: boolean;
   rightSectionIcon?: string;
+  onPress?: () => any;
 };
 const IMG_SIZE = mp(20);
 const IMG_CONTAINER_SIZE = IMG_SIZE + mp(20);
@@ -29,53 +31,62 @@ export const MainCard: React.FC<MainCardProp> = ({
   style,
   showRightSection = false,
   rightSectionIcon,
+  onPress,
 }) => {
   const isSuccess = item.info === '+' ? true : false;
   return (
-    <View style={[styles.container, style]}>
-      <View style={styles.left}>
-        {/* <View style={styles.imgContainer}> */}
-        <LinearGradient colors={colors} style={styles.imgContainer}>
-          <Image source={item.image} style={styles.img} resizeMode="contain" />
-        </LinearGradient>
-        {/* </View> */}
-        <View
-          style={{
-            justifyContent: 'space-between',
-            flex: 0.8,
-          }}>
-          <AppText numberOfLines={1} style={styles.titleText}>
-            {item.title}
-          </AppText>
-          <AppText numberOfLines={1} style={styles.subtitleText}>
-            {item.subtitle}
-          </AppText>
+    <AppButton onPress={onPress}>
+      <View style={[styles.container, style]}>
+        <View style={styles.left}>
+          {/* <View style={styles.imgContainer}> */}
+          <LinearGradient colors={colors} style={styles.imgContainer}>
+            <Image
+              source={item.image}
+              style={styles.img}
+              resizeMode="contain"
+            />
+          </LinearGradient>
+          {/* </View> */}
+          <View
+            style={{
+              justifyContent: 'space-between',
+              flex: 0.8,
+            }}>
+            <AppText numberOfLines={1} style={styles.titleText}>
+              {item.title}
+            </AppText>
+            <AppText numberOfLines={1} style={styles.subtitleText}>
+              {item.subtitle}
+            </AppText>
+          </View>
+        </View>
+        <View style={styles.right}>
+          {showRightSection ? (
+            <View style={{justifyContent: 'space-between'}}>
+              <AppText style={[styles.titleValueText]}>
+                {item.titleValue}
+              </AppText>
+              <View style={styles.rightDownSection}>
+                <MCIcon
+                  name={rightSectionIcon}
+                  size={mp(21)}
+                  color={isSuccess ? COLORS.PRIMARY : COLORS.DANGER}
+                />
+                <AppText
+                  style={[
+                    styles.subtitleValueText,
+                    {color: isSuccess ? COLORS.PRIMARY : COLORS.DANGER},
+                  ]}>
+                  {`${item.info} ${item.subtitleValue}`}
+                </AppText>
+              </View>
+            </View>
+          ) : (
+            item.info && <AppText style={styles.infoText}>{item.info}</AppText>
+          )}
         </View>
       </View>
-      <View style={styles.right}>
-        {showRightSection ? (
-          <View style={{justifyContent: 'space-between'}}>
-            <AppText style={[styles.titleValueText]}>{item.titleValue}</AppText>
-            <View style={styles.rightDownSection}>
-              <MCIcon
-                name={rightSectionIcon}
-                size={mp(21)}
-                color={isSuccess ? COLORS.PRIMARY : COLORS.DANGER}
-              />
-              <AppText
-                style={[
-                  styles.subtitleValueText,
-                  {color: isSuccess ? COLORS.PRIMARY : COLORS.DANGER},
-                ]}>
-                {`${item.info} ${item.subtitleValue}`}
-              </AppText>
-            </View>
-          </View>
-        ) : (
-          item.info && <AppText style={styles.infoText}>{item.info}</AppText>
-        )}
-      </View>
-    </View>
+    </AppButton>
   );
 };
 
